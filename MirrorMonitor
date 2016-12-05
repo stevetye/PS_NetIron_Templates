@@ -1,0 +1,18 @@
+#From multi-service IronWare Switching Configuration Guide (53-1003036-02):
+#- Enable a port to act as the mirror port.  This is the port to which you connect your protocol analyzer
+#- Enable monitoring on the ports you want to monitor
+#
+#Therefore, configured mirroring and monitoring requires one to 
+#1. Enter global configuration mode using "config t"
+#2. Configure the "mirror-port eth <port-designator>" command
+#3. Enter interface config mode for the port to be monitored using "interface eth <monitored-port-designator>"
+#4. Configure monitoring using "monitor ethernet <mirror-port-designator> [in|out|both]"
+#
+#To use this template, replace each instance in the text below with its corresponding value,
+#then designate the correct value in the [in|out|both] section
+
+config t
+mirror-port eth <MIRROR_PORT_DESIGNATOR>
+
+interface eth <MONITOR_PORT_DESIGNATOR>
+monitor ethernet <MIRROR_PORT_DESIGNATOR> [in|out|both]
